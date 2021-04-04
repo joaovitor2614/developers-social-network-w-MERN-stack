@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
      alignItems: 'center'
     },
     formContent: {
-        marginTop: '280px',
+        marginTop: '360px',
         textAlign: 'center',
     },
     inputDiv: {

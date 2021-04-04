@@ -1,8 +1,11 @@
 const express = require('express')
 const config = require('config');
+const dotenv = require('dotenv')
 const axios = require('axios');
 const normalize = require('normalize-url')
-const { check, validationResult } = require('express-validator')
+const { check, validationResult } = require('express-validator');
+dotenv.config();
+
 
 const User = require('../../models/User');
 const Profile = require('../../models/Profile');
@@ -233,7 +236,7 @@ router.get('/github/:username',
                console.log(uri)
                const headers = {
                    'user-agent': 'node-js',
-                   Authorization: `token ${config.get('githubToken')}`
+                   Authorization: `token ${process.env.GITHUB_TOKEN}`
                }
                const apiData = await axios.get(uri, { headers })
                return res.json(apiData.data);
