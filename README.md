@@ -2,7 +2,7 @@
 
 Dev social network buit with MERN STACK
 
-Principal features of the project:
+Main features of the project:
 
 - Back-end
 
