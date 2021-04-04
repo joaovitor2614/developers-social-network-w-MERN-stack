@@ -29,6 +29,12 @@ const postReducer = (state = initialState, action) => {
                 posts: [payload, ...state.posts],
                 loading: false
             }
+        case 'POST_DELETE':
+            return {
+                ...state,
+                posts: state.posts.filter(post => post._id !== payload.postId),
+                loading: false
+            }
         case 'UPDATE_LIKES':
             return {
                 ...state,

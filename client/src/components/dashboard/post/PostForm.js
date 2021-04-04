@@ -15,10 +15,14 @@ import Progress from './Progress';
 import PostItem from './PostItem'
 const useStyles = makeStyles((theme) => ({
     root: {
+        display: 'flex',
+        justifyContent: 'center',
         alignItems: "center",
         justify: "center",
+        marginTop: '100px',
+        wordBreak: 'all',
         '& .MuiFormControl-root': {
-            width: '80%',
+            width: '90%',
             margin: theme.spacing(1)
         },
         

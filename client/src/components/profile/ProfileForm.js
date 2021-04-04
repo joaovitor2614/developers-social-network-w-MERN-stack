@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik';
 import { Redirect, NavLink } from 'react-router-dom'
@@ -29,8 +29,14 @@ const useStyles = makeStyles((theme) => ({
      alignItems: 'center'
     },
     formContent: {
-        marginTop: '210px',
+        marginTop: '280px',
         textAlign: 'center',
+    },
+    inputDiv: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     inputRoot: {
      '& .MuiFormControl-root': {
@@ -67,9 +73,14 @@ export const ProfileForm = ({ handleSubmit, profile }) => {
     
 
   
+    useEffect(() => {
+        if (Array.isArray(profile.skills)) {
+            profile.skills = profile.skills.join(', ')
+            initialValues.skills = profile.skills
+        }
+    }, [profile])
 
-
-    const { inputRoot, formCenter, formContent } = useStyles();
+    const { inputRoot, formCenter, formContent, inputDiv } = useStyles();
     return (
         <Grid className={formCenter}>
             <Grid className={formContent}>
@@ -81,6 +92,7 @@ export const ProfileForm = ({ handleSubmit, profile }) => {
                 setSubmitting(true);
                 console.log(values)
                 handleSubmit(values, history)
+                history.push('/profile')
                 setSubmitting(false);
             }}>
                 {({ errors, touched, handleChange, handleBlur, isValid, dirty, isSubmitting }) => (
@@ -90,7 +102,8 @@ export const ProfileForm = ({ handleSubmit, profile }) => {
                                 <h1>Preencher perfil</h1>
                                 <small>* = campos obrigatórios</small>
                             </div>
-                            <div>
+                            <div className={inputDiv}>
+                            
                                 <Field
                                 name="status"
                                 id="demo-simple-select"
@@ -113,7 +126,8 @@ export const ProfileForm = ({ handleSubmit, profile }) => {
                                 as={TextField}  helperText={touched.skills ? errors.skills : ''}
                                 error={touched.skills && Boolean(errors.skills)}/>
                             </div>
-                           
+
+                          
                         
                             <Field name="company" type="text" label="Insira empresa em que atua"
                             as={TextField}  helperText={touched.company ? errors.company : ''}

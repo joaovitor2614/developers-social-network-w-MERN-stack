@@ -74,10 +74,8 @@ const EducationDisplay = ({ education }) => {
                     </TableRow>
                 ))}
             </TableBody>
-            ) : (<div className={classes.center}>
-                    <h3>Sem campos de educação adicionados</h3>
-                </div>
-               )}
+            ) : ''
+               }
         </Table>
     </TableContainer>
     )  

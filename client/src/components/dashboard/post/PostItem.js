@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import CommentItem from './CommentItem'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import Avatar from '@material-ui/core/Avatar';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Collapse from '@material-ui/core/Collapse';
-import { addLike, addComment, removeLike } from '../../../actions/post';
+import { addLike, addComment, removeLike, deletePost } from '../../../actions/post';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,20 +20,62 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         marginTop: '100px'
+    },
+    postBox: {
+        display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      margin: '15px 0',
+      "@media (max-width: 900px)": {
+        margin: '10px 0',
+        flexDirection: 'column',
+    }
+    },
+     postItem: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: '25px 0',
+      width: '450px',
+      padding: '15px',
+      borderRadius: '25px',
+      border: '1px solid gray',
+      "@media (max-width: 900px)": {
+          margin: '10px 0',
+        width: '300px',
+        padding: '5px'
+    }
+    },
+    commentItem: {
+        display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: '15px 0',
+    },
+    btnStyle: {
+        marginRight: '13px',
+        "@media (max-width: 900px)": {
+            marginTop: '13px',
+        }
+         
     }
  
   }));
 
-  const initialValues = {
-      tex: ''
-  }
 
 const PostItem = ({ post: { _id, name, user, avatar, text, postUrl, comments, likes, data }}) => {
     const [commentText, setCommentText] = useState('');
     const [expanded, setExpanded] = useState(false)
     const dispatch = useDispatch();
+    const authId = useSelector(state => state.auth.user._id);
+    console.log(user);
+    console.log(authId)
+    
     const likesActions = (
-        <Fragment>
+        <div>
             {likes.length > 0 && <small>{likes.length}</small>}
             <IconButton onClick={() => dispatch(addLike(_id))} aria-label="give like" component="span">
                 <ThumbUpIcon  />
@@ -41,7 +83,7 @@ const PostItem = ({ post: { _id, name, user, avatar, text, postUrl, comments, li
             <IconButton onClick={() => dispatch(removeLike(_id))} aria-label="remove like" component="span">
                 <ThumbDownIcon />
             </IconButton>
-        </Fragment>
+        </div>
     )
     const onCollapse = () => setExpanded(!expanded)
     const onSubmitComment = (e, _id, commentText) => {
@@ -52,39 +94,60 @@ const PostItem = ({ post: { _id, name, user, avatar, text, postUrl, comments, li
     }
     const classes = useStyles();
     return (
-        <div>
-            <small>{moment(data).fromNow()}</small>
-            <h4>{name}</h4>
-            <Avatar alt="dev-pic" src={avatar} />
+        <div className={classes.postItem}>
+            
+            <div className={classes.postBox}>
+                <Avatar alt="dev-pic" src={avatar} style={{ marginRight: '15px' }} />
+                <h2>{name}</h2>
+            </div>
+                <small>{moment(data).fromNow()}</small>
             <p>{text}</p>
             {postUrl && (
                 <img src={postUrl} alt="post pic" className="img-post"/>
             )}
            
-                
-            <Button
-                variant="contained"
-                color="secondary"
-                className={classes.button}
-                onClick={onCollapse}
-                startIcon={<CommentIcon />}
-                >
-                Comentários {' '}{comments.length > 0 && comments.length}
-            </Button>
-            {likesActions}
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <form onSubmit={(e) => onSubmitComment(e, _id, commentText)}>
-                    <TextField name="text" type="text" label="Adicione um comentário"
-                        multiline rows={1} rowsMax={2} value={commentText} 
-                        onChange={e => setCommentText(e.target.value)}
-                    />
-                    <Button variant="contained" color="primary" type="submit">
-                    Postar
+             <div className={classes.postBox}>
+                {authId === user && (
+                    <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => dispatch(deletePost(_id))}
+                    >
+                    
+                      Excluir post
                     </Button>
-                </form>
-                {comments.length > 0 && comments.map(comment => (
-                    <CommentItem key={comment._id} postId={_id} comment={comment} />
-                ))}
+                )}
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    className={classes.button}
+                    onClick={onCollapse}
+                    startIcon={<CommentIcon />}
+                    size='small'
+                    style={{ marginRight: '15px' }}
+                    >
+                    Comentários {' '}{comments.length > 0 && comments.length}
+                </Button>
+                {likesActions}
+             </div>
+            
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <div className={classes.commentItem}>
+                    <form className={classes.postBox} onSubmit={(e) => onSubmitComment(e, _id, commentText)}>
+                        <TextField name="text" type="text" label="Insira comentário..."
+                            multiline rows={1} rowsMax={2} value={commentText} 
+                            onChange={e => setCommentText(e.target.value)}
+                            className={classes.btnStyle}
+                        />
+                        <Button className={classes.btnStyle} variant="contained" color="primary" type="submit">
+                           Postar
+                        </Button>
+                    </form>
+                    {comments.length > 0 && comments.map(comment => (
+                        <CommentItem key={comment._id} postId={_id} comment={comment} />
+                    ))}
+                </div>
+                
                 
             </Collapse>
         </div>

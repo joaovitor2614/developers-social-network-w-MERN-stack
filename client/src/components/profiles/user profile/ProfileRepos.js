@@ -52,8 +52,8 @@ const ProfileRepos = ({ username }) => {
             <Paper pagination={2} className={repoGrid}>
                 <h2>Repos</h2>
                 {repos.length > 0 ? (repos.map(repo => (
-                    <div className={repoItem} key={repo.id}>]
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <div className={repoItem} key={repo.id}>
+                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign:'center' }}>
                             <a style={{ textDecoration: 'none', color: 'black', cursor: 'pointer'}} 
                             href={repo.html_url}>
                             <h4>{repo.name}</h4>
@@ -62,15 +62,15 @@ const ProfileRepos = ({ username }) => {
                         </div>
                        
                         <div className={centerItem}>
-                        <StarIcon />
+                       
                         <p>Estrelas: {repo.stargazers_count}</p>
                         </div>
                         <div>
-                        <PeopleIcon />
+                     
                         <p>Observadores: {repo.watchers_count}</p>
                         </div>
                         <div>
-                        <FileCopyIcon />
+                      
                         <p>Forks: {repo.forks}</p>
                         </div>
                     </div>

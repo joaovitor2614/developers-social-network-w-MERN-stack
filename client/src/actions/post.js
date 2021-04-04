@@ -55,6 +55,38 @@ export const addPost = formData => async dispatch => {
     }
 }
 
+export const deletePost = postId => async dispatch => {
+ 
+    try {
+        await axios.delete(`/api/post/${postId}`);
+        dispatch({
+            type: 'POST_DELETE',
+            payload: { postId }
+        })
+        toast.success(`❌  Post deletado`, {
+            position: "top-center",
+            autoClose: 900,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            })
+
+        
+    } catch (err) {
+        console.log(err)
+        const errors = err.response.data.errors;
+        if (errors) {
+            errors.forEach(error => console.log(error))
+        }
+      dispatch({
+          type: 'POST_ERROR',
+          payload: { msg: err.response.statusText }
+      })
+    }
+}
+
 export const addLike = postId => async dispatch => {
     try {
         const res = await axios.put(`/api/post/like/${postId}`);

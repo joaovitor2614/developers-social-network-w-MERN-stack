@@ -96,6 +96,17 @@ export const AddEducation = ({ education }) => {
                                             helperText={touched.fieldofstudy ? errors.fieldofstudy : ''}
                                             error={touched.fieldofstudy && Boolean(errors.fieldofstudy)}
                                             as={TextField} />
+                                        <div>
+                                            <InputLabel id="current">Ainda faz o curso?</InputLabel>
+                                            <FormControlLabel
+                                                control={<Field as={CheckBox} labelid="current" 
+                                                checked={values.current} 
+                                                onChange={() => setFieldValue("current", !values.current)} 
+                                                />}
+                                                label="Sim"
+                                            />
+                                        </div>
+                                    
                                        
                                        
                                     

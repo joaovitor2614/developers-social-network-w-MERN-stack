@@ -65,7 +65,7 @@ const ExperienceDisplay = ({ experience }) => {
                             </TableRow>
                         ))}
                         </TableBody>
-                   ) : (<TableRow><TableCell align="center">Sem dados de experiência adicionados</TableCell></TableRow>)}
+                   ) : ''}
                 </Table>
             </TableContainer>
 
