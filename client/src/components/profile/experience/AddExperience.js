@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
-import CheckBox from '@material-ui/core/CheckBox';
+import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import experienceSchema from '../../../validation/experienceSchema';
 import { addExperience } from '../../../actions/profile';
@@ -90,7 +90,7 @@ export const AddExperience = ({experience}) => {
                                         <div>
                                             <InputLabel id="current">Ainda atua na empresa?</InputLabel>
                                             <FormControlLabel
-                                                control={<Field as={CheckBox} labelid="current" 
+                                                control={<Field as={Checkbox} labelid="current" 
                                                 checked={values.current} 
                                                 onChange={() => setFieldValue("current", !values.current)} 
                                                 />}

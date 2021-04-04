@@ -8,7 +8,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
-import CheckBox from '@material-ui/core/CheckBox';
+
+import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import educationSchema from '../../../validation/educationSchema';
 import { addEducation } from '../../../actions/profile';
@@ -99,7 +100,7 @@ export const AddEducation = ({ education }) => {
                                         <div>
                                             <InputLabel id="current">Ainda faz o curso?</InputLabel>
                                             <FormControlLabel
-                                                control={<Field as={CheckBox} labelid="current" 
+                                                control={<Field as={Checkbox} labelid="current" 
                                                 checked={values.current} 
                                                 onChange={() => setFieldValue("current", !values.current)} 
                                                 />}
