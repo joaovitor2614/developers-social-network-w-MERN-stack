@@ -26,7 +26,7 @@ const CommentItem = ({ postId, comment: { _id, user, name, avatar, text, data}})
     return (
         <div>
             <div className={commentBox}>
-                <Avatar alt="dev-pic" src={avatar} />
+                <Avatar style={{ marginRight: '10px' }} alt="dev-pic" src={avatar} />
                 <h4>{name}</h4>
             </div>
             

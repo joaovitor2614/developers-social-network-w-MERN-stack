@@ -16,6 +16,7 @@ import { deleteEducation } from '../../../actions/profile';
 const useStyles = makeStyles({
     table: {
         maxWidth: 390,
+        fontFamily: 'Roboto'
     },
     center: {
         textAlign: 'center',

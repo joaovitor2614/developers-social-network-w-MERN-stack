@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
        height: '100vh',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    fontFamily: 'Roboto'
    },
    formContent: {
        
@@ -64,7 +65,7 @@ export const LoginPage = () => {
                                 validationSchema={loginSchema}
                                 onSubmit={(values, { setSubmitting }) => {
                                     setSubmitting(true);
-                                    console.log(values)
+                                 
                                     dispatch(login(values));
                                     setSubmitting(false);
                                 }}>

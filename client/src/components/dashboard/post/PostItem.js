@@ -40,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
       margin: '25px 0',
       width: '450px',
       padding: '15px',
-      borderRadius: '25px',
-      border: '1px solid gray',
+     
       "@media (max-width: 900px)": {
           margin: '10px 0',
         width: '300px',
@@ -71,8 +70,7 @@ const PostItem = ({ post: { _id, name, user, avatar, text, postUrl, comments, li
     const [expanded, setExpanded] = useState(false)
     const dispatch = useDispatch();
     const authId = useSelector(state => state.auth.user._id);
-    console.log(user);
-    console.log(authId)
+
     
     const likesActions = (
         <div>
@@ -88,7 +86,7 @@ const PostItem = ({ post: { _id, name, user, avatar, text, postUrl, comments, li
     const onCollapse = () => setExpanded(!expanded)
     const onSubmitComment = (e, _id, commentText) => {
         e.preventDefault();
-        console.log(_id, commentText)
+    
         dispatch(addComment(_id, { commentText }));
        
     }

@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center'
     },
     inputRoot: {
+        fontFamily: 'Roboto',
      '& .MuiFormControl-root': {
          width: '60%',
          margin: theme.spacing(2),
@@ -74,7 +75,7 @@ export const ProfileForm = ({ handleSubmit, profile }) => {
 
   
     useEffect(() => {
-        if (Array.isArray(profile.skills)) {
+        if (profile && Array.isArray(profile.skills)) {
             profile.skills = profile.skills.join(', ')
             initialValues.skills = profile.skills
         }
@@ -136,7 +137,7 @@ export const ProfileForm = ({ handleSubmit, profile }) => {
                             <Field name="website" type="text" label="Insira seu website"
                             as={TextField}  helperText={touched.website ? errors.website : ''}
                             error={touched.website && Boolean(errors.website)}/>
-                            <Field name="location" type="text" label="Insira seu localização"
+                            <Field name="location" type="text" label="Insira sua localização"
                             as={TextField}  helperText={touched.location ? errors.location : ''}
                             error={touched.location && Boolean(errors.location)}/>
                             <div style={{ marginBottom: '20px' }}>
@@ -146,11 +147,11 @@ export const ProfileForm = ({ handleSubmit, profile }) => {
                                 
                             </div>
                             <small >
-                                Se você quiser seu repositório recentes e seu Github link, 
+                                Se você quiser seu recentes repos e seu Github link, 
                                 
                             </small>
                             <small style={{ marginBottom: '30px' }}>
-                               incluse seu usuário github
+                               insira seu usuário github
                             </small>
                             
                             

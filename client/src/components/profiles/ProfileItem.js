@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#f4f4f4',
       color: '#8b949e',
       margin: '20px',
+      fontFamily: 'Roboto',
       "@media (max-width: 900px)": {
           padding: '20px'
       }

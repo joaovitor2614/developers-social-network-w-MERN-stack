@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        fontFamily: 'Roboto'
         
     },
      childDiv: {

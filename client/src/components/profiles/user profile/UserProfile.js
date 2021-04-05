@@ -21,12 +21,14 @@ const useStyles = makeStyles((theme) => ({
        maxWidth: '700px',
        "@media (max-width: 900px)": {
         maxWidth: '400px',
+        fontFamily: 'Roboto'
     },
     credentialsDiv: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        fontFamily: 'Roboto'
     },
     
    }

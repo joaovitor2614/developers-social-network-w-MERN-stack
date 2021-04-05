@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
     postGrid: {
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      fontFamily: 'Roboto'
     },
     postsGrid: {
         display: 'flex',

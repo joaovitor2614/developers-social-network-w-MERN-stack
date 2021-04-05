@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
      display: 'flex',
      justifyContent: 'center',
-     alignItems: 'center'
+     alignItems: 'center',
+     fontFamily: 'Roboto'
     },
     formContent: {
         marginTop: '210px',

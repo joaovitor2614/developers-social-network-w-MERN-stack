@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
          
          display: 'flex',
          justifyContent: 'center',
-         alignItems: 'center'
+         alignItems: 'center',
+         fontFamily: 'Roboto'
     },
     paperPainel: {
         display: 'flex',

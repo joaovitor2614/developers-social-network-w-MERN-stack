@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
      display: 'flex',
      justifyContent: 'center',
-     alignItems: 'center'
+     alignItems: 'center',
+     fontFamily: 'Roboto'
     },
     formContent: {
         
@@ -61,7 +62,7 @@ export const Register = () => {
                 validationSchema={registerSchema}
                 onSubmit={(values, { setSubmitting }) => {
                     setSubmitting(true);
-                    console.log(values)
+                  
                     dispatch(register(values));
                     setSubmitting(false);
                 }}>
@@ -94,14 +95,15 @@ export const Register = () => {
                                     helperText={touched.password2 ? errors.password2 : ''}
                                     error={touched.password2 && Boolean(errors.password2)}
                                     as={TextField} />
+                                <div style={{ marginBottom: '20px' }}>
+                                    <Button variant="contained" 
+                                    disabled={!(isValid && dirty) || isSubmitting} 
+                                    color="primary" type="submit"  >Prosseguir</Button>
+                                </div>
 
                                
                             </Form>
-                            <div style={{ marginBottom: '20px' }}>
-                                <Button variant="contained" 
-                                disabled={!(isValid && dirty) || isSubmitting} 
-                                color="primary" type="submit"  >Prosseguir</Button>
-                            </div>
+                            
                             <h3 style={{ marginBottom: '15px' }}>Já tem uma conta na DevNet?</h3>
                             <NavLink to='/login'>Faça login</NavLink>
                         </div>

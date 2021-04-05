@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
        alignItems: 'center',
        flexDirection: 'column',
        justifyContent: 'center',
-       width: '100%'
+       width: '100%',
+       fontFamily: 'Roboto'
    },
    repoItem: {
     display: 'flex',

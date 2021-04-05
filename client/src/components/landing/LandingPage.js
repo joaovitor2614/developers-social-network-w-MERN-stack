@@ -13,7 +13,8 @@ const useStyles = makeStyles(() => ({
        height: '100vh',
        display: 'flex',
        justifyContent: 'center',
-       alignItems: 'center'
+       alignItems: 'center',
+       fontFamily: 'Roboto'
    },
    landingBox: {
        backgroundColor: '#161b22',

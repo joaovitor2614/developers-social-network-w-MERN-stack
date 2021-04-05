@@ -39,12 +39,13 @@ export const register = formData => async dispatch => {
         }
     }
     try {
+      
         const res = await axios.post('/api/users', formData, config);
         dispatch({
             type: 'REGISTER_SUCESS',
             payload: res.data
         })
-        toast.success('🚀 Registrado com sucesso,por favor efetue o login', {
+        toast.success('🚀 Registrado com sucesso', {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
