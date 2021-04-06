@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export const ProfileExperience = ({ experience }) => {
     const { ExpBox, expItem } = useStyles();
     return (
-        <Grid className={ExpBox} xs={12}>
+        <Grid className={ExpBox} item xs={12}>
             <h1>Experiência</h1>
              {experience.length > 0 ? (experience.map((exp) => {
                  const { company, to, from, title, description, location, id } = exp;

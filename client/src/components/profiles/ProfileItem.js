@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfileItem = ({ profile: { user: { _id, name, avatar}, company, skills, location }}) => {
     const history = useHistory();
-    const goProfile = () => {
+    const goProfile = (_id) => {
       history.push(`/user-profile/${_id}`)
     }
     const { root, imgAvatar, itemGroup, skillStyle, nameItem, itemFlex } = useStyles();
@@ -78,7 +78,7 @@ const ProfileItem = ({ profile: { user: { _id, name, avatar}, company, skills, l
                             </div>
                         ))} 
                     </div>
-                    <Button variant="contained" style={{ backgroundColor: '#17a2b8 '}} onClick={() => goProfile()}>
+                    <Button variant="contained" style={{ backgroundColor: '#17a2b8 '}} onClick={() => goProfile(_id)}>
                         Ver perfil
                     </Button>
                     

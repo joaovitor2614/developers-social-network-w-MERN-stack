@@ -63,7 +63,7 @@ const EducationDisplay = ({ education }) => {
                     <TableCell align="center">Operações</TableCell>
                 </TableRow>
             </TableHead>
-            {education.length > 0 ? (
+            {education.length > 0 && (
                 <TableBody>
                  
                 {rows.map((row) => (
@@ -75,7 +75,7 @@ const EducationDisplay = ({ education }) => {
                     </TableRow>
                 ))}
             </TableBody>
-            ) : ''
+            ) 
                }
         </Table>
     </TableContainer>

@@ -45,7 +45,10 @@ const ProfileRepos = ({ username }) => {
     const { repos } = profileState;
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getGithubRepos(username))
+        if (username !== '') {
+            dispatch(getGithubRepos(username))
+        }
+       
     }, [getGithubRepos])
     const { repoGrid, repoPaper, repoItem, centerItem } = useStyles();
     return (

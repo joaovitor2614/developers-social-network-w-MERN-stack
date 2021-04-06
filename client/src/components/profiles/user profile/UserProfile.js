@@ -46,7 +46,7 @@ const UserProfile = ({ match }) => {
     }, [])
     return (
         <div>
-            {loading ? (<LoadingPage />) : (
+            {loading && profile !== null ? (<LoadingPage />) : (
                 <Fragment>
                     <Link to='/profiles'>Voltar aos perfis</Link>
                     {profile !== null && (

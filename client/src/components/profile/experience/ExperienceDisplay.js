@@ -55,7 +55,7 @@ const ExperienceDisplay = ({ experience }) => {
                             <TableCell align="center">Operações</TableCell>
                         </TableRow>
                     </TableHead>
-                   {experience.length > 0 ? (
+                   {experience.length > 0 && (
                         <TableBody>
                         {rows.map((row) => (
                             <TableRow key={row.operation}>
@@ -66,7 +66,7 @@ const ExperienceDisplay = ({ experience }) => {
                             </TableRow>
                         ))}
                         </TableBody>
-                   ) : ''}
+                   )}
                 </Table>
             </TableContainer>
 
